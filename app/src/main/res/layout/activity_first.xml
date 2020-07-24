@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        android:textSize="20sp"
+        android:textColor="#ff00ff"
+        android:layout_marginBottom="20dp">
+    </Button>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存长图"
+        android:textSize="20sp">
+    </Button>
+
+    <Button
+        android:id="@+id/btnDrawLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="drawlayout">
+
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+    <com.example.demoandroid.view.ClickStatusView
+        android:layout_width="81dp"
+        android:layout_height="34dp">
+    </com.example.demoandroid.view.ClickStatusView>
+
+    <com.example.demoandroid.view.SelectMailView
+        android:id="@+id/selectMailView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D9DDE1"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+    </com.example.demoandroid.view.SelectMailView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下面是新的"
+        android:layout_margin="10dp">
+
+    </TextView>
+
+
+    <com.example.demoandroid.view.SelectMailView
+        android:id="@+id/selectMailView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D9DDE1"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+    </com.example.demoandroid.view.SelectMailView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="33dp"
+        android:hint="aaaaaaaaa"
+        android:visibility="gone">
+
+    </EditText>
+
+
+    <com.example.demoandroid.view.card.CardView
+        android:id="@+id/cv1"
+        android:layout_width="343dp"
+        android:layout_height="176dp"
+        app:cardBackgroundColor="#ffffff"
+        android:layout_marginLeft="20dp"
+        app:cardElevation="20dp"
+        app:cardMaxElevation="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardShadowColorEnd="#00919191"
+        app:cardShadowColorStart="#19919191"
+        app:cardUseCompatPadding="true" android:layout_marginTop="20dp"
+        android:visibility="gone"/>
+
+    <com.example.demoandroid.view.card.CardView
+        android:id="@+id/cv2"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@color/app_selector_card"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:visibility="gone"/>
+
+    <com.example.demoandroid.view.near.NearLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#B3B6B8"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:background="#96CC96"
+            android:text="你好你好你好你好你好你好你好你好你好你好你好你好">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="23"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="#ff0000">
+
+        </TextView>
+
+    </com.example.demoandroid.view.near.NearLinearLayout>
+
+    <com.example.demoandroid.view.SpaceBetweenLayout
+        android:id="@+id/betweenLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+    </com.example.demoandroid.view.SpaceBetweenLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+            <Button
+                android:layout_width="100px"
+                android:layout_height="80px"
+                android:background="#ff00ff"
+                android:text="11"
+                android:layout_marginRight="10px">
+            </Button>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="123人未读"
+            android:gravity="center"
+            android:background="#ffaa33">
+
+        </TextView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

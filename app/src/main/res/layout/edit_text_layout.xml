@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tvHintView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请输入手机号"
+        android:textColor="#BCBDC3"
+        android:textSize="14sp"
+        android:visibility="invisible">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="输入手机号"
+            android:textColorHint="#BCBDC3"
+            android:textSize="14sp"
+            android:background="@null"
+            android:maxLines="1"
+            android:inputType="textEmailAddress">
+        </EditText>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/llTwoItemContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/ivPreIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_text_clear"
+                    android:scaleType="center">
+                </ImageView>
+
+                <ImageView
+                    android:id="@+id/ivAfterIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_password_hidden"
+                    android:scaleType="center"
+                    android:layout_marginLeft="8dp">
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llOneItemContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvSuffix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="\@haitun.com"
+                    android:textSize="14sp"
+                    android:textColor="#111112"
+                    android:gravity="center_vertical">
+                </TextView>
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DFE2E5">
+    </View>
+
+    <TextView
+        android:id="@+id/tvErrorView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="邮箱格式不正确"
+        android:textSize="12sp"
+        android:textColor="#F56262"
+        android:layout_marginTop="4dp">
+
+    </TextView>
+
+</LinearLayout>

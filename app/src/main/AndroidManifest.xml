@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.demoandroid">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="不将就"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:name=".App"
+        android:theme="@style/AppTheme">
+        <activity android:name=".FirstActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+<!--        <activity android:name=".FirstActivity" />-->
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".CustomViewActivity" />
+        <activity android:name=".SavePictureActivity" />
+        <activity android:name=".DrawActivity" />
+        <activity android:name=".GenericDrawerActivity" />
+        <activity android:name=".MaterialMenuActivity" />
+
+
+    </application>
+
+</manifest>

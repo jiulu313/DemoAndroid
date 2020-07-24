@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#858789"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+    </Button>
+
+    <TextView
+        android:id="@+id/btnCustomView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view1000"
+        android:textFontWeight="1000"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view700"
+        android:textFontWeight="700"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view600"
+        android:textFontWeight="600"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view500"
+        android:textFontWeight="500"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view400"
+        android:textFontWeight="400"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view300"
+        android:textFontWeight="300"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view200"
+        android:textFontWeight="200"
+        android:background="#ffffff">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义view100"
+        android:textFontWeight="100"
+        android:background="#ffffff">
+    </TextView>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:text="hello, 世界"
+        android:textFontWeight="400"
+        android:background="#ffffff">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+</LinearLayout>
