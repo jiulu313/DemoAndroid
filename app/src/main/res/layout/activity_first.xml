@@ -34,8 +34,10 @@
     </Button>
 
     <Button
+        android:id="@+id/btnLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="测试完美抽屉">
 
     </Button>
 

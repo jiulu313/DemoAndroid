@@ -22,6 +22,7 @@ public class FirstActivity extends Activity {
     SelectMailView selectMailView;
     Button btnSave;
     Button btnDrawLayout;
+    Button btnLayout;
 
     SpaceBetweenLayout betweenLayout;
 
@@ -34,6 +35,7 @@ public class FirstActivity extends Activity {
         betweenLayout = findViewById(R.id.betweenLayout);
         btnSave = findViewById(R.id.btnSave);
         btnDrawLayout = findViewById(R.id.btnDrawLayout);
+        btnLayout = findViewById(R.id.btnLayout);
 
         MMKV kv = MMKV.defaultMMKV();
         kv.encode("name","tom");
@@ -51,6 +53,11 @@ public class FirstActivity extends Activity {
 
         btnDrawLayout.setOnClickListener(v -> {
             Intent intent = new Intent(FirstActivity.this,DrawActivity.class);
+            startActivity(intent);
+        });
+
+        btnLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(FirstActivity.this,WMDrawerActivity.class);
             startActivity(intent);
         });
     }

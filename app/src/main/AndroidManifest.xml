@@ -27,6 +27,7 @@
         <activity android:name=".DrawActivity" />
         <activity android:name=".GenericDrawerActivity" />
         <activity android:name=".MaterialMenuActivity" />
+        <activity android:name=".WMDrawerActivity" />
 
 
     </application>
