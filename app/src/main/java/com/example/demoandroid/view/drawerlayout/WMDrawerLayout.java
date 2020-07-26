@@ -38,6 +38,14 @@ public class WMDrawerLayout extends FrameLayout {
         initView(context, attrs);
     }
 
+    public View getLeftMenu(){
+        return leftMenu;
+    }
+
+    public View getMainView(){
+        return mainView;
+    }
+
     private void initView(Context context, AttributeSet attrs) {
         mScroller = new Scroller(context,new DecelerateInterpolator());
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -124,7 +132,7 @@ public class WMDrawerLayout extends FrameLayout {
                             mScroller.startScroll(curScrollX,0,leftMenu.getMeasuredWidth() - curScrollX,0,150);
                         }
                     }else {
-                        mScroller.startScroll(curScrollX,0,-curScrollX,0);
+                        mScroller.startScroll(curScrollX,0,-curScrollX,150);//150ms
                     }
                     invalidate();
 
@@ -152,6 +160,7 @@ public class WMDrawerLayout extends FrameLayout {
             case MotionEvent.ACTION_DOWN:
                 point.x = (int) ev.getX();
                 point.y = (int) ev.getY();
+                super.dispatchTouchEvent(ev);
                 break;
             case MotionEvent.ACTION_MOVE:
                 int dx = (int) Math.abs(ev.getX() - point.x);
@@ -170,6 +179,9 @@ public class WMDrawerLayout extends FrameLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                super.dispatchTouchEvent(ev);
+                isHorizontalScroll = false;
+                isTestComplete = false;
                 break;
 
         }
@@ -185,4 +197,6 @@ public class WMDrawerLayout extends FrameLayout {
         int tempX = mScroller.getCurrX();
         scrollTo(tempX,0);
     }
+
+
 }

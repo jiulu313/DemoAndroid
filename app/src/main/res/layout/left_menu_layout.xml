@@ -8,9 +8,11 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/btnLeft"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这是侧边栏中的button">
+        android:text="这是侧边栏中的button"
+        android:clickable="true">
     </Button>
 
 
