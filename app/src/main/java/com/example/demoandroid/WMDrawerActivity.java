@@ -20,19 +20,5 @@ public class WMDrawerActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_drawer_layout);
-
-        drawerLayout = findViewById(R.id.drawlayout);
-
-        btnMiddle = drawerLayout.findViewById(R.id.btnMiddle);
-        btnLeft = drawerLayout.findViewById(R.id.btnLeft);
-        btnMiddle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("zh33","btnMiddle clik");
-            }
-        });
-        btnLeft.setOnClickListener(v -> Log.e("zh33","onClick..."));
-
-
     }
 }
