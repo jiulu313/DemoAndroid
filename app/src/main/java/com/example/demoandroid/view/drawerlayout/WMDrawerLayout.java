@@ -1,8 +1,10 @@
 package com.example.demoandroid.view.drawerlayout;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.example.demoandroid.R;
 public class WMDrawerLayout extends FrameLayout {
     private View leftMenu;
     private View mainView;
+    private FrameLayout mainMask;
 
     private float percent;
     private int touchSlop;
@@ -53,11 +56,24 @@ public class WMDrawerLayout extends FrameLayout {
 
         leftMenu = LayoutInflater.from(context).inflate(R.layout.left_menu_layout, null);
         mainView = LayoutInflater.from(context).inflate(R.layout.middle_menu_layout, null);
+        mainMask = new FrameLayout(context);
+        mainMask.setBackgroundColor(Color.parseColor("#4f4f4f"));
 
         addView(mainView);
         addView(leftMenu);
+        addView(mainMask);
+
+        mainMask.setAlpha(0);
     }
 
+    @Override
+    public void scrollTo(int x, int y) {
+        super.scrollTo(x, y);
+        int curX = getScrollX();
+        float alpha = (float) curX / (float)leftMenu.getMeasuredWidth();
+        Log.e("zh33","alpha=" + alpha);
+        mainMask.setAlpha(Math.abs(alpha));
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -66,6 +82,7 @@ public class WMDrawerLayout extends FrameLayout {
 
         //2 决定 mainView 宽高
         mainView.measure(widthMeasureSpec, heightMeasureSpec);
+        mainMask.measure(widthMeasureSpec,heightMeasureSpec);
 
         //3 决定leftMenu宽度
         int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -80,6 +97,7 @@ public class WMDrawerLayout extends FrameLayout {
 
         //1 摆放 mainView 的位置
         mainView.layout(left, top, right, bottom);
+        mainMask.layout(left,top,right,bottom);
 
         //2 摆放leftMenu的位置
         int leftWidth = leftMenu.getMeasuredWidth();
