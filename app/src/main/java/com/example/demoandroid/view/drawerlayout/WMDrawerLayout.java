@@ -1,14 +1,15 @@
 package com.example.demoandroid.view.drawerlayout;
 
 import android.content.Context;
-import android.graphics.BitmapRegionDecoder;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.Scroller;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,8 @@ public class WMDrawerLayout extends FrameLayout {
     private int mLastX;
     private int mLastY;
 
+    private Scroller mScroller;
+
     public WMDrawerLayout(@NonNull Context context) {
         super(context);
         initView(context, null);
@@ -36,6 +39,7 @@ public class WMDrawerLayout extends FrameLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
+        mScroller = new Scroller(context,new DecelerateInterpolator());
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         percent = 0.7f;
 
@@ -88,7 +92,6 @@ public class WMDrawerLayout extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-
         if (!isTestComplete) {
             getEventType(ev);
             return true;
@@ -113,6 +116,18 @@ public class WMDrawerLayout extends FrameLayout {
                     break;
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
+                    curScrollX = getScrollX();
+                    if(Math.abs(curScrollX) > (leftMenu.getMeasuredWidth() / 2 )){
+                        if(curScrollX < 0){//左
+                            mScroller.startScroll(curScrollX,0,-leftMenu.getMeasuredWidth() - curScrollX,0,150);
+                        }else {//右
+                            mScroller.startScroll(curScrollX,0,leftMenu.getMeasuredWidth() - curScrollX,0,150);
+                        }
+                    }else {
+                        mScroller.startScroll(curScrollX,0,-curScrollX,0);
+                    }
+                    invalidate();
+
                     isHorizontalScroll = false;
                     isTestComplete = false;
                     break;
@@ -158,7 +173,16 @@ public class WMDrawerLayout extends FrameLayout {
                 break;
 
         }
+    }
 
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        if(!mScroller.computeScrollOffset()){
+            return;
+        }
 
+        int tempX = mScroller.getCurrX();
+        scrollTo(tempX,0);
     }
 }
