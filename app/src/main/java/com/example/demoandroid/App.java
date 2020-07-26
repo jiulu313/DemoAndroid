@@ -11,6 +11,6 @@ public class App extends Application {
         super.onCreate();
         String rootDir = MMKV.initialize(this);
 
-        Log.e("zh","dir=" + rootDir);
+        Log.d("zh","dir=" + rootDir);
     }
 }
