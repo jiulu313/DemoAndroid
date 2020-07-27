@@ -84,7 +84,7 @@ public class WMDrawerLayout extends FrameLayout {
         mainView.measure(widthMeasureSpec, heightMeasureSpec);
         mainMask.measure(widthMeasureSpec,heightMeasureSpec);
 
-        //3 决定leftMenu宽度
+        //3 决定 leftMenu 宽度
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int realWidth = judgeLeftMenuWidth(width);
         int widthSpec = MeasureSpec.makeMeasureSpec(realWidth, MeasureSpec.EXACTLY);
@@ -99,7 +99,7 @@ public class WMDrawerLayout extends FrameLayout {
         mainView.layout(left, top, right, bottom);
         mainMask.layout(left,top,right,bottom);
 
-        //2 摆放leftMenu的位置
+        //2 摆放 leftMenu 的位置
         int leftWidth = leftMenu.getMeasuredWidth();
         leftMenu.layout(left - leftWidth, top, left, bottom);
     }

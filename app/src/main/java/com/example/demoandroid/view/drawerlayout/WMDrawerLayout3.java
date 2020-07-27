@@ -97,7 +97,6 @@ public class WMDrawerLayout3 extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e("zh55","dispatchTouchEvent  action=" + ev.getAction());
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN:
                 mLastX = (int) ev.getX();
@@ -106,31 +105,35 @@ public class WMDrawerLayout3 extends FrameLayout {
             case MotionEvent.ACTION_MOVE:
                 int dx = Math.abs((int) ev.getX() - mLastX);
                 int dy = Math.abs((int) ev.getY() - mLastY);
-                Log.e("zh55","dx=" + dx + "  dy=" + dy);
-                if(dx > dy && dx > touchSlop){//水平
+                Log.e("zh55","dx=" + dx + "  dy=" + dy + " touchSlop=" + touchSlop);
+                if(dx > dy){//水平
                     Log.e("zh55","水平");
                     int left,top,right,bottom;
                     if(ev.getX() < mLastX){ //向左
                         left = leftMenu.getLeft() - dx;
+                        if(left < -leftMenu.getWidth()){
+                            left = -leftMenu.getWidth();
+                        }
                     }else {//向右
                         left = leftMenu.getLeft() + dx;
+                        if(left > 0){
+                            left = 0;
+                        }
                     }
                     top = leftMenu.getTop();
                     right = left + leftMenu.getWidth();
                     bottom = leftMenu.getBottom();
                     leftMenu.layout(left,top,right,bottom);
                 }
-
-                mLastX = (int) ev.getX();
-                mLastY = (int) ev.getY();
-                return true;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                break;
+                mLastX = (int) ev.getX();
+                mLastY = (int) ev.getY();
+                return super.dispatchTouchEvent(ev);
 
         }
 
-        return super.dispatchTouchEvent(ev);
+        return true;
     }
 
 

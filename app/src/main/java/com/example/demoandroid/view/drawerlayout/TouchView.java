@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -21,9 +20,7 @@ public class TouchView extends FrameLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
-        Log.e("zh88","dispatchTouchEvent action=" + ev.getActionMasked());
-
-        return super.dispatchTouchEvent(ev);
-
+        Log.e("zh88","dispatchTouchEvent action=" + ev.getAction());
+        return true;
     }
 }
