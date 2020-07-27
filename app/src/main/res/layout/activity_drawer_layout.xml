@@ -12,12 +12,4 @@
 
     </com.example.demoandroid.view.drawerlayout.WMDrawerLayout3>
 
-    <com.example.demoandroid.view.drawerlayout.TouchView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffaa00"
-        android:visibility="gone">
-
-    </com.example.demoandroid.view.drawerlayout.TouchView>
-
 </LinearLayout>
