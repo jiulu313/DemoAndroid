@@ -23,21 +23,6 @@ public class WMDrawerActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_drawer_layout);
         drawerLayout = findViewById(R.id.drawlayout);
-        btnLeft = drawerLayout.findViewById(R.id.btnLeft);
-        btnMiddle = drawerLayout.findViewById(R.id.btnMiddle);
-
-        btnMiddle.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(WMDrawerActivity.this,"中间的button",Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(WMDrawerActivity.this,"侧边栏的button",Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 }

@@ -1,29 +1,22 @@
 package com.example.demoandroid.view.drawerlayout;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.Scroller;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.demoandroid.GenericDrawerActivity;
 import com.example.demoandroid.R;
 
-import java.util.function.LongUnaryOperator;
 
 public class WMDrawerLayout3 extends FrameLayout {
     private View leftMenu;
@@ -35,8 +28,6 @@ public class WMDrawerLayout3 extends FrameLayout {
     private int mLastX;
     private int mLastY;
     private GestureDetector gestureDetector;
-
-
 
     public WMDrawerLayout3(@NonNull Context context) {
         super(context);
@@ -50,41 +41,6 @@ public class WMDrawerLayout3 extends FrameLayout {
 
     private void initView(Context context, AttributeSet attrs) {
         percent = 0.7f;
-        gestureDetector = new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return true;
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                if(leftMenu.getRight() == leftMenu.getWidth() && e.getX() > leftMenu.getWidth()){
-                    closeDrawerLayout();
-                }
-                return super.onSingleTapUp(e);
-            }
-        });
-
-        leftMenu = LayoutInflater.from(context).inflate(R.layout.left_menu_layout, null);
-        mainView = LayoutInflater.from(context).inflate(R.layout.middle_menu_layout, null);
-        mainMask = new FrameLayout(context);
-        mainMask.setBackgroundColor(Color.parseColor("#814f4f4f"));
-
-        addView(mainView);
-        addView(mainMask);
-        addView(leftMenu);
-
-        mainMask.setAlpha(0);
-
-        mainMask.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(leftMenu.getRight() == 0){
-                    return false;
-                }
-                return gestureDetector.onTouchEvent(event);
-            }
-        });
     }
 
     @Override
@@ -210,4 +166,44 @@ public class WMDrawerLayout3 extends FrameLayout {
 
     }
 
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        if(getChildCount() != 2){
+            throw new IllegalArgumentException("WMDrawerLayout有且只能有2个子view");
+        }
+
+        leftMenu = getChildAt(0);
+        mainView = getChildAt(1);
+        removeAllViews();
+
+        gestureDetector = new GestureDetector(getContext(),new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return true;
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                if(leftMenu.getRight() == leftMenu.getWidth() && e.getX() > leftMenu.getWidth()){
+                    closeDrawerLayout();
+                }
+                return super.onSingleTapUp(e);
+            }
+        });
+
+        mainMask = new FrameLayout(getContext());
+        mainMask.setBackgroundColor(Color.parseColor("#814f4f4f"));
+        mainMask.setAlpha(0);
+        mainMask.setOnTouchListener((v, event) -> {
+            if(leftMenu.getRight() == 0){
+                return false;
+            }
+            return gestureDetector.onTouchEvent(event);
+        });
+
+        addView(mainView);
+        addView(mainMask);
+        addView(leftMenu);
+    }
 }
