@@ -1,5 +1,6 @@
 package com.example.demoandroid.view.drawerlayout;
 
+import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -33,7 +34,6 @@ public class WMDrawerLayout3 extends FrameLayout {
 
     private int mLastX;
     private int mLastY;
-
     private GestureDetector gestureDetector;
 
 
@@ -79,6 +79,9 @@ public class WMDrawerLayout3 extends FrameLayout {
         mainMask.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                if(leftMenu.getRight() == 0){
+                    return false;
+                }
                 return gestureDetector.onTouchEvent(event);
             }
         });
@@ -133,7 +136,7 @@ public class WMDrawerLayout3 extends FrameLayout {
                 int dx = Math.abs((int) ev.getX() - mLastX);
                 int dy = Math.abs((int) ev.getY() - mLastY);
                 if (dx > dy) {//水平
-                    int left, top, right, bottom;
+                    int left, right;
                     if (ev.getX() < mLastX) { //向左
                         left = leftMenu.getLeft() - dx;
                         if (left < -leftMenu.getWidth()) {
@@ -145,10 +148,8 @@ public class WMDrawerLayout3 extends FrameLayout {
                             left = 0;
                         }
                     }
-                    top = leftMenu.getTop();
                     right = left + leftMenu.getWidth();
-                    bottom = leftMenu.getBottom();
-                    leftMenu.layout(left, top, right, bottom);
+                    leftMenu.layout(left, leftMenu.getTop(), right, leftMenu.getBottom());
                     float alpha = (float) leftMenu.getRight() / (float) leftMenu.getWidth();
                     mainMask.setAlpha(Math.abs(alpha));
                 }
@@ -186,11 +187,9 @@ public class WMDrawerLayout3 extends FrameLayout {
     private void openDrawerLayout(){
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, leftMenu.getWidth()).setDuration(200);
         valueAnimator.addUpdateListener(animation -> {
-            int curRight = (int) animation.getAnimatedValue();
-            int left = curRight - leftMenu.getWidth();
-            int top = leftMenu.getTop();
-            int bottom = leftMenu.getBottom();
-            leftMenu.layout(left, top, curRight, bottom);
+            int right = (int) animation.getAnimatedValue();
+            int left = right - leftMenu.getWidth();
+            leftMenu.layout(left, leftMenu.getTop(), right, leftMenu.getBottom());
             float alpha = (float) leftMenu.getRight() / (float) leftMenu.getWidth();
             mainMask.setAlpha(Math.abs(alpha));
         });
@@ -201,11 +200,9 @@ public class WMDrawerLayout3 extends FrameLayout {
         Log.e("zh11","closeDrawerLayout");
         ValueAnimator valueAnimator = ValueAnimator.ofInt(leftMenu.getWidth(),0).setDuration(200);
         valueAnimator.addUpdateListener(animation -> {
-            int curRight = (int) animation.getAnimatedValue();
-            int left = curRight - leftMenu.getWidth();
-            int top = leftMenu.getTop();
-            int bottom = leftMenu.getBottom();
-            leftMenu.layout(left, top, curRight, bottom);
+            int right = (int) animation.getAnimatedValue();
+            int left = right - leftMenu.getWidth();
+            leftMenu.layout(left, leftMenu.getTop(), right, leftMenu.getBottom());
             float alpha = (float) leftMenu.getRight() / (float) leftMenu.getWidth();
             mainMask.setAlpha(Math.abs(alpha));
         });
